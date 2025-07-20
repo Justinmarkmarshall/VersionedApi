@@ -1,0 +1,7 @@
+### Get Categories V1
+GET http://localhost:5256/api/categories
+Accept: application/json
+
+### Get Categories V2
+GET http://localhost:5256/api/v2/categories
+Accept: application/json
