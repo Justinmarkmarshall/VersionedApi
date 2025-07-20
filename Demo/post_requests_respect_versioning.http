@@ -1,0 +1,38 @@
+###should return 200
+
+
+### POST to v1 - string date
+POST http://localhost:5256/api/events
+Content-Type: application/xml
+
+<EventRequest>
+  <Name>Old Fashioned Fair</Name>
+  <EventDate>2025-07-20</EventDate>
+</EventRequest>
+
+### POST to v2 - DateTime
+POST http://localhost:5256/api/v2/events
+Content-Type: application/xml
+
+<EventRequest>
+  <Name>Modern Tech Conference</Name>
+  <EventDate>2025-07-20T14:23:00Z</EventDate>
+</EventRequest>
+
+###should return 404 bad request
+POST http://localhost:5256/api/events
+Content-Type: application/xml
+
+<EventRequest>
+  <Name>Old Fashioned Fair</Name>
+  <EventDate>2025-07-20T14:23:00Z</EventDate>
+</EventRequest>
+
+### should return 200 but we convert the date to date time
+POST http://localhost:5256/api/v2/events
+Content-Type: application/xml
+
+<EventRequest>
+  <Name>Old Fashioned Fair</Name>
+  <EventDate>2025-07-20</EventDate>
+</EventRequest>
